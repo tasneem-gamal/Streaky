@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:streaky/presentation/view/screens/splash_view.dart';
 
 class Streaky extends StatelessWidget {
   const Streaky({super.key});
@@ -20,6 +21,7 @@ class Streaky extends StatelessWidget {
       ),
       themeMode: ThemeMode.light,
       
+      home: SplashView(),
     );
   }
 }
