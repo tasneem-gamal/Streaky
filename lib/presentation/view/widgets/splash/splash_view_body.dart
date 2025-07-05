@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:streaky/core/theming/styles.dart';
 import 'dart:math' as math;
 
+import 'package:streaky/core/utils/extensions.dart';
+import 'package:streaky/presentation/view/screens/home_view.dart';
+
 
 
 class SplashViewBody extends StatefulWidget {
@@ -22,6 +25,13 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
     super.initState();
     initRandomAnimation();
+    navigateToHome();
+  }
+  
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
   }
 
   void initRandomAnimation(){
@@ -41,6 +51,14 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       );
     });
     animationController.repeat(reverse: true);
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 7 ), () {
+      if(mounted){
+        context.push(HomeView());
+      }
+    });
   }
 
   @override
