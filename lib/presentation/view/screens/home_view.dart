@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:streaky/core/theming/colors.dart';
 import 'package:streaky/core/theming/styles.dart';
 import 'package:streaky/core/utils/constants.dart';
+import 'package:streaky/core/utils/spacing.dart';
+import 'package:streaky/presentation/view/widgets/home/day_widget.dart';
+import 'package:streaky/presentation/view/widgets/home/day_widget_list_view.dart';
+import 'package:streaky/presentation/view/widgets/home/home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -22,25 +27,12 @@ class HomeViewBody extends StatelessWidget {
       padding: Constants.appPadding,
       child: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            expandedHeight: 70,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                'Good morning, \nDiana',
-                style: CustomTextStyles.font16BlackBold(context),
-              ),
-            ),
-            actions: [
-              IconButton(
-                onPressed: (){}, 
-                icon: Icon(Icons.notifications)
-              )
-            ],
-          )
+          HomeAppBar(),
+          SliverToBoxAdapter(child: verticalSpace(context, 24)),
+          DayWidgetListView(),
         ],
       ),
     );
   }
 }
+
