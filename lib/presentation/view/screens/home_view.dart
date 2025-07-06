@@ -5,6 +5,7 @@ import 'package:streaky/core/utils/constants.dart';
 import 'package:streaky/core/utils/spacing.dart';
 import 'package:streaky/presentation/view/widgets/home/day_widget.dart';
 import 'package:streaky/presentation/view/widgets/home/day_widget_list_view.dart';
+import 'package:streaky/presentation/view/widgets/home/habit_item_grid_view.dart';
 import 'package:streaky/presentation/view/widgets/home/home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -30,6 +31,8 @@ class HomeViewBody extends StatelessWidget {
           HomeAppBar(),
           SliverToBoxAdapter(child: verticalSpace(context, 24)),
           DayWidgetListView(),
+          SliverToBoxAdapter(child: verticalSpace(context, 24)),
+          HabitItemGridView()
         ],
       ),
     );

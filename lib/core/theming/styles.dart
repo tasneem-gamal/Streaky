@@ -17,6 +17,19 @@ class CustomTextStyles {
         color: Colors.white,
       );
 
+  static TextStyle font24BlackBold(BuildContext context) => TextStyle(
+        fontSize: ResponsiveValue<double>(
+          context,
+          defaultValue: 24.0,
+          conditionalValues: [
+            const Condition.smallerThan(name: MOBILE, value: 18.0),
+            const Condition.largerThan(name: TABLET, value: 32.0),
+          ],
+        ).value,
+        fontWeight: FontWeightHelper.bold,
+        color: Colors.black,
+      );
+
   static TextStyle font24WhiteMedium(BuildContext context) => TextStyle(
         fontSize: ResponsiveValue<double>(
           context,
