@@ -4,7 +4,7 @@ import 'package:streaky/core/theming/styles.dart';
 import 'dart:math' as math;
 
 import 'package:streaky/core/utils/extensions.dart';
-import 'package:streaky/presentation/view/screens/home_view.dart';
+import 'package:streaky/presentation/view/screens/get_started_view.dart';
 
 
 
@@ -25,7 +25,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
     super.initState();
     initRandomAnimation();
-    navigateToHome();
+    navigateToGetStarted();
   }
   
   @override
@@ -53,10 +53,10 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     animationController.repeat(reverse: true);
   }
 
-  void navigateToHome() {
+  void navigateToGetStarted() {
     Future.delayed(const Duration(seconds: 7 ), () {
       if(mounted){
-        context.push(HomeView());
+        context.push(GetStartedView());
       }
     });
   }
@@ -69,9 +69,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
           alignment: Alignment.center,
           child: Text(
             'Streaky',
-            style: CustomTextStyles.font32BlackBold(
-              context,
-            ).copyWith(color: Colors.white),
+            style: CustomTextStyles.font32WhiteBold(context)
           ),
         ),
         ...emojiAnimations.asMap().entries.map((entry){

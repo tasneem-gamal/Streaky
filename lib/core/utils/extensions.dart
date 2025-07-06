@@ -7,11 +7,12 @@ extension Navigation on BuildContext {
     );
   }
 
-  Future<T?> pushReplacement<T, TO>(Widget page) {
-    return Navigator.of(this, rootNavigator: true).pushReplacement<T, TO>(
-      MaterialPageRoute(builder: (_) => page),
-    );
-  }
+  Future<T?> pushReplacement<T>(Widget page) {
+  return Navigator.of(this, rootNavigator: true).pushReplacement<T, T>(
+    MaterialPageRoute(builder: (_) => page),
+  );
+}
+
 
   Future<T?> pushAndRemoveUntil<T>(Widget page) {
     return Navigator.of(this, rootNavigator: true).pushAndRemoveUntil<T>(
