@@ -5,7 +5,7 @@ class ColorsManager{
   static const Color greenShade = Color(0xffb8eb6c);
   static const Color orangeShade = Color(0xfff7cd63);
   static const Color pinkShade = Color(0xfffc8fc6);
-  static const Color mainColorLight = Color(0xff4D78BA);
+  static const Color mainColorLight = Color.fromARGB(255, 151, 187, 241);
   static const Color warningRed = Color(0xffB01E1E);
   static const Color lightGray = Color(0xFF7D7D7D);
   static const Color moreLightGray = Color(0xFFCACACA);
