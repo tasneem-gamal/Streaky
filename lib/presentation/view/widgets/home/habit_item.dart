@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:streaky/core/theming/colors.dart';
 import 'package:streaky/core/theming/styles.dart';
+import 'package:streaky/data/models/habit_model.dart';
 
 class HabitItem extends StatelessWidget {
   const HabitItem({
-    super.key,
+    super.key, required this.habit,
   });
+
+  final HabitModel habit;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class HabitItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.book, size: 40,),
+                Icon(IconData(habit.habitIconCodePoint, fontFamily: 'MaterialIcons'), size: 40,),
                 Transform.scale(
                   scale: 1.5,
                   child: Checkbox(
@@ -45,11 +48,11 @@ class HabitItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Reading',
+                  habit.habitName,
                   style: CustomTextStyles.font24BlackBold(context),
                 ),
                 Text(
-                  'Read 20 pages',
+                  habit.habitDescription,
                   style: CustomTextStyles.font16BlackBold(context),
                 ),
               ],
