@@ -3,7 +3,8 @@ import 'package:streaky/core/theming/colors.dart';
 import 'package:streaky/data/models/icon_model.dart';
 
 class IconsGrid extends StatefulWidget {
-  const IconsGrid({super.key});
+  const IconsGrid({super.key, required this.onIconSelected});
+  final void Function(IconModel) onIconSelected;
 
   @override
   State<IconsGrid> createState() => _IconsGridState();
@@ -47,6 +48,7 @@ class _IconsGridState extends State<IconsGrid> {
               setState(() {
                 selectedIcon = icon;
               });
+              widget.onIconSelected(icon);
             },
             child: Container(
               decoration: BoxDecoration(

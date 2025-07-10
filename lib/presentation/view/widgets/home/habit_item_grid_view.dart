@@ -14,7 +14,7 @@ class HabitItemGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 2,
         mainAxisSpacing: 12,
         childAspectRatio: 0.7,
         crossAxisSpacing: 12,

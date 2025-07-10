@@ -16,40 +16,49 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HabitBloc()..add(Loadhabits()),
-      child: Scaffold(
-        body: HomeViewBody(),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          elevation: 1,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {},
-                iconSize: 40,
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            body: HomeViewBody(),
+            bottomNavigationBar: BottomAppBar(
+              color: Colors.white,
+              elevation: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.home),
+                    onPressed: () {},
+                    iconSize: 40,
+                  ),
+                  FloatingActionButton(
+                    elevation: 1,
+                    backgroundColor: ColorsManager.mainColor,
+                    onPressed: () {
+                      final habitBloc = context.read<HabitBloc>();
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.white,
+                        context: context,
+                        builder:
+                            (bottomSheetContext) => BlocProvider.value(
+                              value: habitBloc,
+                              child: AddHabitBottomSheet(),
+                            ),
+                      );
+                    },
+                    child: Icon(Icons.add, color: Colors.white),
+                  ),
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: ColorsManager.greenShade,
+                    child: Icon(Icons.person, color: Colors.black),
+                  ),
+                ],
               ),
-              FloatingActionButton(
-                elevation: 1,
-                backgroundColor: ColorsManager.mainColor,
-                onPressed: () {
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.white,
-                    context: context,
-                    builder: (context) => AddHabitBottomSheet(),
-                  );
-                },
-                child: Icon(Icons.add, color: Colors.white),
-              ),
-              CircleAvatar(
-                radius: 25,
-                backgroundColor: ColorsManager.greenShade,
-                child: Icon(Icons.person, color: Colors.black),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        }
       ),
     );
   }
@@ -68,7 +77,7 @@ class HomeViewBody extends StatelessWidget {
           SliverToBoxAdapter(child: verticalSpace(context, 24)),
           DayWidgetListView(),
           SliverToBoxAdapter(child: verticalSpace(context, 24)),
-          HabitsBlocBuilder()
+          HabitsBlocBuilder(),
         ],
       ),
     );
