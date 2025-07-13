@@ -3,13 +3,20 @@ import 'package:streaky/core/theming/colors.dart';
 import 'package:streaky/core/theming/styles.dart';
 import 'package:streaky/data/models/habit_model.dart';
 
-class HabitItem extends StatelessWidget {
+class HabitItem extends StatefulWidget {
   const HabitItem({
     super.key, required this.habit,
   });
 
   final HabitModel habit;
 
+  @override
+  State<HabitItem> createState() => _HabitItemState();
+}
+  
+  bool? isChecked = false;
+
+class _HabitItemState extends State<HabitItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,12 +33,16 @@ class HabitItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(IconData(habit.habitIconCodePoint, fontFamily: 'MaterialIcons'), size: 40,),
+                Icon(IconData(widget.habit.habitIconCodePoint, fontFamily: 'MaterialIcons'), size: 40,),
                 Transform.scale(
                   scale: 1.5,
                   child: Checkbox(
-                    value: false, 
-                    onChanged: (onChanged){},
+                    value: isChecked, 
+                    onChanged: (value){
+                      setState(() {
+                        isChecked = value;
+                      });
+                    },
                     shape: CircleBorder(),
                     side: BorderSide(color: Colors.black),
                     fillColor: WidgetStateProperty.resolveWith<Color>((states){
@@ -48,11 +59,11 @@ class HabitItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  habit.habitName,
+                  widget.habit.habitName,
                   style: CustomTextStyles.font24BlackBold(context),
                 ),
                 Text(
-                  habit.habitDescription,
+                  widget.habit.habitDescription,
                   style: CustomTextStyles.font16BlackBold(context),
                 ),
               ],
